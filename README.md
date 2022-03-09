@@ -116,3 +116,4 @@ We create a root element for our `components` view.
 - [ ] Add helpful comments
 - [ ] Style components (look into [Tailwind CSS](https://tailwindcss.com)?)
 - [ ] Modify ingredients schema (the measurements allowed are only mg right now)
+- [ ] Improve animations (turning pages should hide the pages below)
