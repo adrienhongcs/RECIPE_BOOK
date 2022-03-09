@@ -29,7 +29,17 @@ Rails 7 now uses [import maps](https://github.com/rails/importmap-rails) to impo
 
 Unfortunately, React often uses [JSX](https://reactjs.org/docs/introducing-jsx.html) which requires a transpiling step. Thankfully, we can use [htm (Hyperscript Tagged Markup)](https://github.com/developit/htm) to use JSX-like syntax without any transpiling.
 
-First, let's import the JavaScript modules we will need into our Rails 7 app. 
+First, let's set up a `components` folder to work inside our Rails 7 app.
+```
+rails generate controller components index
+```
+We can also organize the `components` path inside our import map:
+```ruby
+# config/importmap.rb
+pin_all_from "app/javascript/components", under: "components"
+```
+
+Let's import the JavaScript modules we will need. 
 ```
 ./bin/importmap pin react react-dom htm
 ```
@@ -41,6 +51,26 @@ import {  createElement } from "react"
 import htm from "htm"
 
 export default htm.bind(createElement)
+```
+Here's what a traditional React [example](https://reactjs.org/docs/hooks-intro.html):
+```javascript
+// app/javascript/components/example.js
+
+import { useState } from 'react';
+
+export default function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
 ```
 
 > - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
