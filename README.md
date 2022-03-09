@@ -25,6 +25,12 @@ Rails 7 now uses [import maps](https://github.com/rails/importmap-rails) to impo
 > - [Modern web apps without JavaScript bundling or transpiling (David Heinemeier Hansson)](https://world.hey.com/dhh/modern-web-apps-without-javascript-bundling-or-transpiling-a20f2755)
 > - [Modern JavaScript in Rails 7 without Webpack (David Heinemeier Hansson)](https://www.youtube.com/watch?v=PtxZvFnL2i0&t=1415s&ab_channel=DavidHeinemeierHansson)
 
+## Rails 7 and React
+
+Unfortunately, React often uses [JSX](https://reactjs.org/docs/introducing-jsx.html) which requires a transpiling step.
+
+> - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
+
 # Things to Work On
 
 - [ ] Refactor code
