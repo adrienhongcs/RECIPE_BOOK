@@ -106,7 +106,13 @@ We create a root element for our `components` view.
 > - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
 > - [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html)
 
-# Things to Work On
+## GraphQL
+
+# Recipe Book
+
+## Things to Work On
 
 - [ ] Refactor code
 - [ ] Add helpful comments
+- [ ] Style components (look into [Tailwind CSS](https://tailwindcss.com)?)
+- [ ] Modify ingredients schema (the measurements allowed are only mg right now)
