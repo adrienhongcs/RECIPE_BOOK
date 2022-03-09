@@ -33,7 +33,7 @@ First, let's set up a `components` folder to work inside our Rails 7 app.
 ```
 rails generate controller components index
 ```
-We can also organize the `components` path inside our import map:
+We can also organize the `components` path inside our import map.
 ```ruby
 # config/importmap.rb
 pin_all_from "app/javascript/components", under: "components"
@@ -52,7 +52,7 @@ import htm from "htm"
 
 export default htm.bind(createElement)
 ```
-Here's what a traditional React [example](https://reactjs.org/docs/hooks-intro.html):
+Here's a traditional React [example](https://reactjs.org/docs/hooks-intro.html):
 ```javascript
 // app/javascript/components/example.js
 
@@ -71,6 +71,36 @@ export default function Example() {
     </div>
   );
 }
+```
+Here's the modified version using htm.
+```javascript
+// app/javascript/components/example.js
+
+import { useState } from 'react';
+
+export default function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return h`
+    <div>
+      <p>You clicked ${count} times</p>
+      <button onClick=${() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  `;
+}
+```
+Let's now use `Example` at the root of our app. First, we define the root path.
+```ruby
+# config/routes.rb
+root "components#index"
+```
+We create a root element for our `components` view.
+```html
+# app/views/components/index.html.erb
+<div id="root"></div>
 ```
 
 > - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
