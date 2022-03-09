@@ -27,9 +27,24 @@ Rails 7 now uses [import maps](https://github.com/rails/importmap-rails) to impo
 
 ## Rails 7 and React
 
-Unfortunately, React often uses [JSX](https://reactjs.org/docs/introducing-jsx.html) which requires a transpiling step.
+Unfortunately, React often uses [JSX](https://reactjs.org/docs/introducing-jsx.html) which requires a transpiling step. Thankfully, we can use [htm (Hyperscript Tagged Markup)](https://github.com/developit/htm) to use JSX-like syntax without any transpiling.
+
+First, let's import the JavaScript modules we will need into our Rails 7 app. 
+```
+./bin/importmap pin react react-dom htm
+```
+Then, we create a function by binding htm to `createElement`. Recall that each JSX element is just syntactic sugar for calling React.createElement(). We now have a function that can be used to produce objects in a JSX format.
+```javascript
+// app/javascript/components/htm_create_element.js
+
+import {  createElement } from "react"
+import htm from "htm"
+
+export default htm.bind(createElement)
+```
 
 > - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
+> - [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html)
 
 # Things to Work On
 
