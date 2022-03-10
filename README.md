@@ -244,6 +244,16 @@ export default Example() {
 Tada, you've successfully set up Rails 7 with GraphQL, Apollo Client, and React!
 # Recipe Book
 
+I used [react-pageflip](https://github.com/Nodlik/react-pageflip) to animate the recipe book. In order to so, simply add the following.
+```ruby
+# config/importmap.rb
+
+...
+pin "react-pageflip", to: "https://ga.jspm.io/npm:react-pageflip@2.0.3/build/index.js"
+pin "page-flip", to: "https://ga.jspm.io/npm:page-flip@2.0.7/dist/js/page-flip.browser.js"
+...
+```
+
 ## Things to Work On
 
 - [ ] Refactor code
