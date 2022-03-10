@@ -184,7 +184,7 @@ class GraphqlController < ApplicationController
 ```
 Inside `app/graphql/types/`, you can now modify each `Type` for each model in your app to your liking. There, you can also add functions you want to use to fetch your data.
 
-You can also specify at which endpoint the GraphQL server will operate from by modifying the line below (here its `/graphql`).
+You can also specify at which endpoint the GraphQL server will operate from by modifying the line below (here it's `/graphql`).
 ```ruby
 Rails.application.routes.draw do
   ...
@@ -199,8 +199,49 @@ Let's set up Apollo Client. First let's import the required package.
 ```
 ./bin/importmap pin @apollo/client
 ```
+Then, we create a client.
+```js
+// app/javascript/components/apollo_client.js
 
+import {
+    ApolloClient,
+    InMemoryCache,
+  } from "@apollo/client";
+  
+  const client = new ApolloClient({
+    uri: '<your_app_uri>/graphql',
+    cache: new InMemoryCache()
+  });
 
+  export default client
+```
+Here is how you could use Apollo Client to query from the GraphQL server inside a React component.
+```js
+// app/javascript/components/example.js
+
+import {
+    useQuery,
+    gql
+  } from "@apollo/client";
+import client from "components/apollo_client"
+
+const QUERY = gql`
+  users {
+    id
+    followers {
+      id
+    }
+  }
+`
+
+export default Example() {
+
+  const { loading, error, data } = useQuery(QUERY, {  client: client })
+  
+  return ...
+}
+```
+Tada, you've successfully set up Rails 7 with GraphQL, Apollo Client, and React!
 # Recipe Book
 
 ## Things to Work On
