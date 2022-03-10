@@ -130,16 +130,18 @@ We've successfully used React and Rails 7 without transpiling!
 
 ## GraphQL
 
-GraphQL is a query language for your API, and a server-side runtime for executing queries. It contains of a schema in the form of a directed graph. A traditional REST API can bring two issues:
+GraphQL is a query language for your API, and a server-side runtime for executing queries. It contains of a schema in the form of a directed graph. 
+
+A traditional REST API can bring two issues:
 
 > - **Overfetching**: the client fetches more information than they need.  
 > 
 >   "Imagine for example a screen that needs to display a list of users only with their names. In a REST API, this app would usually hit the `/users` endpoint and receive a JSON array with user data. This response however might contain more info about the users that are returned, e.g. their birthdays or addresses - information that is useless for the client because it only needs to display the users’ names."
 > - **Underfetching**: the client doesn't get enough information from a specific endpoint and needs to make additional requests to fetch the information they need.
 > 
->   "Consider the same app would also need to display the last three followers per user. The API provides the additional endpoint `/users/<user-id>/followers`. In order to be able to display the required information, the app will have to make one request to the `/users` endpoint and then hit the `/users/<user-id>/followers` endpoint for each user."
+>   "Consider the same app which needs to display the last three followers per user. The API provides the additional endpoint `/users/<user-id>/followers`. In order to be able to display the required information, the app will have to make one request to the `/users` endpoint and then hit the `/users/<user-id>/followers` endpoint for each user."
 
-In GraphQL, a query simply represents a sub-graph of the schema so you fetch only the data you need without any additional query.
+In GraphQL, a query simply represents a sub-graph of the schema so you fetch only the data you need without any additional query effectively avoiding overfetching/underfetching.
 
 > - [Introduction to GraphQL](https://graphql.org/learn/)
 > - [GraphQL is the better REST](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
@@ -158,24 +160,45 @@ From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rai
 > - [Introduction to Apollo Client](https://www.apollographql.com/docs/react/)
 > - [Caching in Apollo Client](https://www.apollographql.com/docs/react/caching/overview/)
 
-## Rails 7, GraphQL, Apollo Client, React - Putting All Together
+## Rails 7, GraphQL, Apollo Client, React - Putting it Together
 
+Let's assume we already have a Rails 7 app with models generated and database initialized. 
+
+First, we add the [graphql-ruby](https://github.com/rmosolgo/graphql-ruby) gem.
 ```
 bundle add graphql
 rails generate graphql:install
 bundle install
 ```
+Then, create a GraphQL `Type` for each model in your app.
 ```
-rails generate  graphql:object <object>
+rails generate  graphql:object <model_name>
 ```
+Lastly, add the following to allow access to the API from outside the domain while preventing [Cross-Site Request Forgery (CSRF)](https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf).
+```ruby
+# app/controllers/graphql_controller.rb
+
+class GraphqlController < ApplicationController
+
+ protect_from_forgery with: :null_session
+```
+Inside `app/graphql/types/`, you can now modify each `Type` for each model in your app to your liking. There, you can also add functions you want to use to fetch your data.
+
+You can also specify at which endpoint the GraphQL server will operate from by modifying the line below (here its `/graphql`).
+```ruby
+Rails.application.routes.draw do
+  ...
+  post "/graphql", to: "graphql#execute"
+  ...
+end
+```
+
+You've now successfully set up a GraphQL server!
+
+Let's set up Apollo Client. First let's import the required package.
 ```
 ./bin/importmap pin @apollo/client
 ```
-``` ruby
-# app/controllers/graphql_controllers.rb
-protect_from_forgery with: :null_session
-```
-
 
 
 # Recipe Book
