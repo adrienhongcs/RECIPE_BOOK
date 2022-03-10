@@ -130,6 +130,25 @@ We've successfully used React and Rails 7 without transpiling!
 
 ## GraphQL
 
+```
+bundle add graphql
+rails generate graphql:install
+bundle install
+```
+```
+rails generate  graphql:object <object>
+```
+```
+./bin/importmap pin @apollo/client
+```
+``` ruby
+# app/controllers/graphql_controllers.rb
+protect_from_forgery with: :null_session
+```
+
+> - [GraphQL on Rails:
+From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)
+
 # Recipe Book
 
 ## Things to Work On
