@@ -148,7 +148,15 @@ From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rai
 
 ## Apollo Client
 
+"Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI." The main advantage is the ability to store GraphQL queries into an in-memory cache which avoids sending additional network requests.
+
+<img width="968" alt="Screen Shot 2022-03-10 at 2 40 04 PM" src="https://user-images.githubusercontent.com/64567338/157741730-df35bbab-5a9f-4fbc-a5c4-440d6aee2e4f.png">
+
+
+
+
 > - [Introduction to Apollo Client](https://www.apollographql.com/docs/react/)
+> - [Caching in Apollo Client](https://www.apollographql.com/docs/react/caching/overview/)
 
 ## Rails 7, GraphQL, Apollo Client, React - Putting All Together
 
