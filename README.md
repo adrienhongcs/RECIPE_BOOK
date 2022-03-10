@@ -130,7 +130,7 @@ We've successfully used React and Rails 7 without transpiling!
 
 ## GraphQL
 
-GraphQL is a query language for your API, and a server-side runtime for executing queries. It contains of a schema in the form of a directed graph. 
+GraphQL is a query language for your API, and a server-side runtime for executing queries. Its schema is in the form of a directed graph. 
 
 A traditional REST API can bring two issues:
 
@@ -141,7 +141,7 @@ A traditional REST API can bring two issues:
 > 
 >   "Consider the same app which needs to display the last three followers per user. The API provides the additional endpoint `/users/<user-id>/followers`. In order to be able to display the required information, the app will have to make one request to the `/users` endpoint and then hit the `/users/<user-id>/followers` endpoint for each user."
 
-In GraphQL, a query simply represents a sub-graph of the schema so you fetch only the data you need without any additional query effectively avoiding overfetching/underfetching.
+In GraphQL, a query simply represents a sub-graph of the schema so you fetch only the data you need without any additional query which effectively avoids overfetching/underfetching.
 
 > - [Introduction to GraphQL](https://graphql.org/learn/)
 > - [GraphQL is the better REST](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
