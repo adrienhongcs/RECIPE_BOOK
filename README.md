@@ -102,6 +102,28 @@ We create a root element for our `components` view.
 # app/views/components/index.html.erb
 <div id="root"></div>
 ```
+And finally, add `Example` to our `components` index.
+```js
+// app/javascript/components/index.js
+
+import {  render } from "react-dom"
+import h from "components/htm_create_element"
+
+import Example from "components/example"
+
+
+render(
+    h`
+        <${Example}/>
+    `,
+    document.getElementById("root")
+)
+```
+Run the server using the command below and check out http://localhost:3000/ to see `Example`.
+```
+rails s
+```
+We've successfully used React and Rails 7 without transpiling!
 
 > - [Using React with importmaps on Rails 7 (David Heinemeier Hansson)](https://www.youtube.com/watch?v=k73LKxim6tw)
 > - [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html)
