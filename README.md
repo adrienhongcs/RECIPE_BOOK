@@ -139,6 +139,19 @@ GraphQL is a query language for your API, and a server-side runtime for executin
 > 
 >   "Consider the same app would also need to display the last three followers per user. The API provides the additional endpoint `/users/<user-id>/followers`. In order to be able to display the required information, the app will have to make one request to the `/users` endpoint and then hit the `/users/<user-id>/followers` endpoint for each user."
 
+In GraphQL, a query simply represents a sub-graph of the schema so you fetch only the data you need without any additional query.
+
+> - [Introduction to GraphQL](https://graphql.org/learn/)
+> - [GraphQL is the better REST](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
+> - [GraphQL on Rails:
+From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)
+
+## Apollo Client
+
+> - [Introduction to Apollo Client](https://www.apollographql.com/docs/react/)
+
+## Rails 7, GraphQL, Apollo Client, React - Putting All Together
+
 ```
 bundle add graphql
 rails generate graphql:install
@@ -155,10 +168,7 @@ rails generate  graphql:object <object>
 protect_from_forgery with: :null_session
 ```
 
-> - [Introduction to GraphQL](https://graphql.org/learn/)
-> - [GraphQL is the better REST](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
-> - [GraphQL on Rails:
-From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)
+
 
 # Recipe Book
 
