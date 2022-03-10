@@ -261,3 +261,4 @@ pin "page-flip", to: "https://ga.jspm.io/npm:page-flip@2.0.7/dist/js/page-flip.b
 - [ ] Style components (look into [Tailwind CSS](https://tailwindcss.com)?)
 - [ ] Modify ingredients schema (the measurements allowed are only mg right now)
 - [ ] Improve animations (turning pages should hide the pages below)
+- [ ] Add a way to add recipes (GraphQL Mutations)
