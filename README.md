@@ -130,6 +130,15 @@ We've successfully used React and Rails 7 without transpiling!
 
 ## GraphQL
 
+GraphQL is a query language for your API, and a server-side runtime for executing queries. It contains of a schema in the form of a directed graph. A traditional REST API can bring two issues:
+
+> - **Overfetching**: the client fetches more information than they need.  
+> 
+>   "Imagine for example a screen that needs to display a list of users only with their names. In a REST API, this app would usually hit the `/users` endpoint and receive a JSON array with user data. This response however might contain more info about the users that are returned, e.g. their birthdays or addresses - information that is useless for the client because it only needs to display the users’ names."
+> - **Underfetching**: the client doesn't get enough information from a specific endpoint and needs to make additional requests to fetch the information they need.
+> 
+>   "Consider the same app would also need to display the last three followers per user. The API provides the additional endpoint `/users/<user-id>/followers`. In order to be able to display the required information, the app will have to make one request to the `/users` endpoint and then hit the `/users/<user-id>/followers` endpoint for each user."
+
 ```
 bundle add graphql
 rails generate graphql:install
@@ -146,6 +155,8 @@ rails generate  graphql:object <object>
 protect_from_forgery with: :null_session
 ```
 
+> - [Introduction to GraphQL](https://graphql.org/learn/)
+> - [GraphQL is the better REST](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
 > - [GraphQL on Rails:
 From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)
 
